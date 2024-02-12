@@ -1,0 +1,47 @@
+[
+	{
+		"id": 1,
+		"title": "Everyday Flowers",
+		"photographer": "Johanna Hobel for Vogue",
+		"date": "Jun 2019",
+		"imgSrc": "image01.jpg",
+		"bgImg": "image01@2x.jpg",
+		"description": ""
+	},
+	{
+		"id": 2,
+		"title": "The Wilder Night",
+		"photographer": "Johanna Hobel for Wild",
+		"date": "Dec 2019",
+		"imgSrc": "image02.jpg",
+		"bgImg": "image02@2x.jpg",
+		"description": ""
+	},
+	{
+		"id": 3,
+		"title": "Smooth Memories",
+		"photographer": "Johanna Hobel for Chanel",
+		"date": "Feb 2020",
+		"imgSrc": "image03.jpg",
+		"bgImg": "image03@2x.jpg",
+		"description": ""
+	},
+	{
+		"id": 4,
+		"title": "The Future Universe",
+		"photographer": "Johanna Hobel For ON",
+		"date": "Apr 2020",
+		"imgSrc": "image04.jpg",
+		"bgImg": "image04@2x.jpg",
+		"description": ""
+	},
+	{
+		"id": 5,
+		"title": "She was born urban",
+		"photographer": "Johanna Hobel for SI",
+		"date": "Dec 2021",
+		"imgSrc": "image05.jpg",
+		"bgImg": "image05@2x.jpg",
+		"description": ""
+	}
+]

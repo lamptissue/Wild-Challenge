@@ -1,0 +1,9 @@
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+.char {
+	transform: translateY(100px);
+	transition: transform 0.5s;
+}
