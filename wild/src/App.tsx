@@ -1,6 +1,8 @@
 "use client";
 
-import { useState, useRef } from "react";
+// import { useState, useRef } from "react";
+import { useState } from "react";
+
 import { GlobalStyle, Button, Header, DetailBox, DetailText, Container, StyledImageComponent } from "./styled";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";

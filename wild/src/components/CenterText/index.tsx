@@ -56,7 +56,7 @@ export default function CenterSlide({
 				</CurrentSlideCounter>
 
 				{data &&
-					data.map((item: any, index: any) => (
+					data.map((_item: any, index: any) => (
 						<SlideCount key={index} $backgroundColor={currentSlide + 1 === index + 1 ? "white" : "transparent"} />
 					))}
 			</SlideCounterContainer>
