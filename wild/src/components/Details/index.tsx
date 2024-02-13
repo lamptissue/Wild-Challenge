@@ -13,20 +13,24 @@ export default function Details({
 	handleMouseLeave: any;
 }) {
 	const detailContainer = useRef<any>();
-
+	const loadAnimation = useRef<any>();
 	const [author, setAuthor] = useState(currentData.author);
 	const [date, setDate] = useState(currentData.date);
+
+	useGSAP(() => {
+		gsap.to(loadAnimation.current, { opacity: 1, delay: 7, duration: 3 });
+	});
 
 	useGSAP(
 		() => {
 			gsap.to(detailContainer.current, {
 				opacity: 0,
-				duration: 0.5,
+				duration: 1,
 				onComplete: () => {
 					setAuthor(currentData.author);
 					setDate(currentData.date);
 
-					gsap.fromTo(detailContainer.current, { opacity: 0 }, { opacity: 1, duration: 2.5 });
+					gsap.fromTo(detailContainer.current, { opacity: 0 }, { opacity: 1, duration: 3 });
 				},
 			});
 		},
@@ -34,7 +38,7 @@ export default function Details({
 	);
 
 	return (
-		<DetailBox>
+		<DetailBox ref={loadAnimation}>
 			<div ref={detailContainer}>
 				<DetailText className='detailAnimation'>{author}</DetailText>
 				<DetailText $align={"right"}>{date}</DetailText>

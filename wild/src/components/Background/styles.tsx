@@ -6,6 +6,7 @@ export const BackgroundContainer = styled.div`
 	overflow: hidden;
 	position: relative;
 	z-index: 0;
+	background-color: white;
 `;
 
 export const BackgroundBlur = styled.div`

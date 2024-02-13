@@ -47,3 +47,29 @@ export const Container = styled.div`
 	z-index: 5;
 	padding: 16px;
 `;
+
+export const LeftColumn = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+`;
+export const CenterColumn = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+`;
+export const RightColumn = styled.div`
+	display: flex;
+	justify-content: flex-end;
+	height: 100%;
+`;
+
+export const RightColumnInside = styled.div`
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: end;
+	flex-direction: column;
+	position: relative;
+	max-width: 248px;
+`;

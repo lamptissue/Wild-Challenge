@@ -1,5 +1,14 @@
-import { useState } from "react";
-import { GlobalStyle, Header, Container, StyledImageComponent } from "./styled";
+import { useState, useRef } from "react";
+import {
+	GlobalStyle,
+	Header,
+	Container,
+	StyledImageComponent,
+	LeftColumn,
+	RightColumn,
+	RightColumnInside,
+	CenterColumn,
+} from "./styled";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import SplitType from "split-type";
@@ -17,19 +26,30 @@ function App() {
 	const [previousSlide, setPreviousSlide] = useState(data.length - 1);
 	const [nextSlide, setNextSlide] = useState(currentSlide + 1);
 	const [isHovered, setIsHovered] = useState(false);
-
+	const leftColumnRef = useRef<any>();
+	const rightColumnRef = useRef<any>();
 	const maxDataLength = data.length - 1;
 
 	const handlePreviousSlides = () => {
 		currentSlide === 0 ? setCurrentSlide(maxDataLength) : setCurrentSlide((count) => count - 1);
 		previousSlide === 0 ? setPreviousSlide(maxDataLength) : setPreviousSlide((count) => count - 1);
 		nextSlide === 0 ? setNextSlide(maxDataLength) : setNextSlide((count) => count - 1);
+
+		gsap
+			.timeline()
+			.fromTo(leftColumnRef.current, { opacity: 0 }, { opacity: 1, duration: 0.5, stagger: 0.5 })
+			.fromTo(rightColumnRef.current, { opacity: 0 }, { opacity: 1, duration: 0.5 });
 	};
 
 	const handleNextSlides = () => {
 		currentSlide === maxDataLength ? setCurrentSlide(0) : setCurrentSlide((count) => count + 1);
 		previousSlide === maxDataLength ? setPreviousSlide(0) : setPreviousSlide((count) => count + 1);
 		nextSlide === maxDataLength ? setNextSlide(0) : setNextSlide((count) => count + 1);
+
+		gsap
+			.timeline()
+			.fromTo(leftColumnRef.current, { opacity: 0 }, { opacity: 1, duration: 0.5, stagger: 0.5 })
+			.fromTo(rightColumnRef.current, { opacity: 0 }, { opacity: 1, duration: 0.5 });
 	};
 
 	const handleMouseEnter = () => {
@@ -43,9 +63,21 @@ function App() {
 	const currentData = data[currentSlide];
 
 	useGSAP(() => {
+		const tl = gsap.timeline();
 		const myText = SplitType.create("#header");
-		console.log("text", myText);
-		gsap.to(".char", { y: 2, stagger: 0.05, delay: 0.5, duration: 1 });
+		gsap.set([leftColumnRef.current, rightColumnRef.current], { opacity: 0 });
+
+		tl.to(
+			[leftColumnRef.current, rightColumnRef.current],
+			{
+				opacity: 1,
+				duration: 3,
+				stagger: 0.5,
+			},
+			"+=2"
+		);
+
+		tl.to(".char", { y: 2, stagger: 0.05, delay: 2, duration: 1 });
 	});
 
 	return (
@@ -54,18 +86,18 @@ function App() {
 			<Cursor data={data.length} currentSlide={currentSlide + 1} isHovered={isHovered} />
 
 			<Container>
-				<div className='test1'>
+				<LeftColumn className='first'>
 					<Header id='header'>XYZ Photography</Header>
-
 					<StyledImageComponent
+						ref={leftColumnRef}
 						src={`/images/${data[nextSlide].imgSrc}`}
 						alt={`/images/${data[nextSlide].description}`}
 						onClick={handleNextSlides}
 						onMouseEnter={handleMouseEnter}
 						onMouseLeave={handleMouseLeave}
 					/>
-				</div>
-				<div className='test2'>
+				</LeftColumn>
+				<CenterColumn className='third'>
 					<CenterSlide
 						data={data}
 						handleNextSlides={handleNextSlides}
@@ -74,24 +106,25 @@ function App() {
 						handleMouseEnter={handleMouseEnter}
 						handleMouseLeave={handleMouseLeave}
 					/>
-				</div>
-				<div className='test3'>
-					<div className='test3inside'>
+				</CenterColumn>
+				<RightColumn className='second'>
+					<RightColumnInside>
 						<StyledImageComponent
+							// ref={previousSlideRef}
+							ref={rightColumnRef}
 							src={`/images/${data[previousSlide].imgSrc}`}
 							alt={`/images/${data[previousSlide].description}`}
 							onClick={handlePreviousSlides}
 							onMouseEnter={handleMouseEnter}
 							onMouseLeave={handleMouseLeave}
 						/>
-
 						<Details
 							currentData={currentData}
 							handleMouseEnter={handleMouseEnter}
 							handleMouseLeave={handleMouseLeave}
 						/>
-					</div>
-				</div>
+					</RightColumnInside>
+				</RightColumn>
 			</Container>
 			<Background currentData={currentData} />
 		</>

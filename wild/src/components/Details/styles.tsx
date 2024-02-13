@@ -10,6 +10,7 @@ export const DetailBox = styled.div`
 	justify-content: space-between;
 	flex-direction: column;
 	z-index: 10;
+	opacity: 0;
 `;
 
 export const DetailText = styled.p<{ $align?: string }>`

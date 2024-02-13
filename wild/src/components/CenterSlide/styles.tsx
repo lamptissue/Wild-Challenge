@@ -13,4 +13,5 @@ export const ImageOuterContainer = styled.div`
 	height: auto;
 	z-index: 10;
 	position: relative;
+	opacity: 0;
 `;

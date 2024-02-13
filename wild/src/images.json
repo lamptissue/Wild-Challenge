@@ -6,7 +6,7 @@
 		"date": "Jun 2019",
 		"imgSrc": "image01.jpg",
 		"bgImg": "image01@2x.jpg",
-		"description": ""
+		"description": "Back of a man posing"
 	},
 	{
 		"id": 2,
@@ -15,7 +15,7 @@
 		"date": "Dec 2019",
 		"imgSrc": "image02.jpg",
 		"bgImg": "image02@2x.jpg",
-		"description": ""
+		"description": "Woman in plaster"
 	},
 	{
 		"id": 3,
@@ -24,7 +24,7 @@
 		"date": "Feb 2020",
 		"imgSrc": "image03.jpg",
 		"bgImg": "image03@2x.jpg",
-		"description": ""
+		"description": "Llama face"
 	},
 	{
 		"id": 4,
@@ -33,7 +33,7 @@
 		"date": "Apr 2020",
 		"imgSrc": "image04.jpg",
 		"bgImg": "image04@2x.jpg",
-		"description": ""
+		"description": "Blurred lights"
 	},
 	{
 		"id": 5,
@@ -42,6 +42,6 @@
 		"date": "Dec 2021",
 		"imgSrc": "image05.jpg",
 		"bgImg": "image05@2x.jpg",
-		"description": ""
+		"description": "Silhouette of a pregnant"
 	}
 ]

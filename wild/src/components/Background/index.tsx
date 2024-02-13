@@ -24,7 +24,7 @@ export default function Background({ currentData }: { currentData: any }) {
 				.timeline()
 				.from(nextRef, { opacity: 0 })
 				.to([bgRef1.current, bgRef2.current], { opacity: 0, duration: 1 })
-				.to(nextRef, { opacity: 1, duration: 1 }, "-=0.5");
+				.to(nextRef, { opacity: 1, duration: 1 }, "<");
 
 			setActiveLayer(nextLayer);
 		},

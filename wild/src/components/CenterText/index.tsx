@@ -32,8 +32,15 @@ export default function CenterSlide({
 	currentData: any;
 }) {
 	const testContainer = useRef<any>();
+	const slider = useRef<any>();
 
 	const [title, setTitle] = useState(currentData.title);
+
+	useGSAP(() => {
+		gsap.set([testContainer.current, slider.current], { opacity: 0 });
+		gsap.to(testContainer.current, { opacity: 1, duration: 2, delay: 6 });
+		gsap.to(slider.current, { opacity: 1, duration: 2, delay: 7 });
+	});
 
 	useGSAP(
 		() => {
@@ -51,19 +58,17 @@ export default function CenterSlide({
 	);
 
 	return (
-		<ImageOuterContainer>
-			<div ref={testContainer}>
-				<ImageContainer>
-					<FilledText>
-						<H1 className='titleAnimation'>{title}</H1>
-					</FilledText>
-				</ImageContainer>
-				<OutlineText>
+		<ImageOuterContainer ref={testContainer}>
+			<ImageContainer>
+				<FilledText>
 					<H1 className='titleAnimation'>{title}</H1>
-				</OutlineText>
-			</div>
+				</FilledText>
+			</ImageContainer>
+			<OutlineText>
+				<H1 className='titleAnimation'>{title}</H1>
+			</OutlineText>
 
-			<SlideCounterContainer>
+			<SlideCounterContainer ref={slider}>
 				<CurrentSlideCounter>
 					{currentSlide + 1} of {data.length}
 				</CurrentSlideCounter>
