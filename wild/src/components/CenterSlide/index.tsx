@@ -5,7 +5,7 @@ import CenterText from "../CenterText";
 interface ImageData {
 	id: number;
 	title: string;
-	photographer: string;
+	author: string;
 	date: string;
 	imgSrc: string;
 	bgImg: string;

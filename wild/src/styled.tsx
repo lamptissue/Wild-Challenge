@@ -43,7 +43,6 @@ export const Container = styled.div`
 	display: grid;
 	grid-template-columns: 1fr 2fr 1fr;
 
-	border: 3px solid red;
 	/* overflow: hidden; */
 	z-index: 5;
 	padding: 16px;

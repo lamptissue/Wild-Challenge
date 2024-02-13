@@ -18,3 +18,13 @@ export const BackgroundBlur = styled.div`
 	left: 0;
 	z-index: 1;
 `;
+
+export const BackgroundImage = styled.img`
+	object-fit: cover;
+	top: -783px;
+	left: -128px;
+	overflow: hidden;
+	position: fixed;
+	width: 1856px;
+	height: 2466px;
+`;

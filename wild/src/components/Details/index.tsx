@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useState } from "react";
 import { DetailBox, DetailText, Button } from "./styles";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -14,7 +14,7 @@ export default function Details({
 }) {
 	const detailContainer = useRef<any>();
 
-	const [photographer, setPhotographer] = useState(currentData.photographer);
+	const [author, setAuthor] = useState(currentData.author);
 	const [date, setDate] = useState(currentData.date);
 
 	useGSAP(
@@ -23,7 +23,7 @@ export default function Details({
 				opacity: 0,
 				duration: 0.5,
 				onComplete: () => {
-					setPhotographer(currentData.photographer);
+					setAuthor(currentData.author);
 					setDate(currentData.date);
 
 					gsap.fromTo(detailContainer.current, { opacity: 0 }, { opacity: 1, duration: 2.5 });
@@ -36,7 +36,7 @@ export default function Details({
 	return (
 		<DetailBox>
 			<div ref={detailContainer}>
-				<DetailText className='detailAnimation'>{photographer}</DetailText>
+				<DetailText className='detailAnimation'>{author}</DetailText>
 				<DetailText $align={"right"}>{date}</DetailText>
 			</div>
 			<Button onMouseEnter={() => handleMouseEnter()} onMouseLeave={() => handleMouseLeave()}>
