@@ -1,7 +1,7 @@
 // import { useState, useRef } from "react";
 import { useState } from "react";
 
-import { GlobalStyle, Button, Header, DetailBox, DetailText, Container, StyledImageComponent } from "./styled";
+import { GlobalStyle, Header, Container, StyledImageComponent } from "./styled";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -14,6 +14,7 @@ import Background from "./components/Background";
 import CenterSlide from "./components/CenterSlide";
 
 import Cursor from "./components/Cursor";
+import Details from "./components/Details";
 function App() {
 	const [currentSlide, setCurrentSlide] = useState(0);
 	const [previousSlide, setPreviousSlide] = useState(data.length - 1);
@@ -54,67 +55,49 @@ function App() {
 	return (
 		<>
 			<GlobalStyle />
+			<Cursor data={data.length} currentSlide={currentSlide + 1} isHovered={isHovered} />
+
 			<Container>
-				<Cursor data={data.length} currentSlide={currentSlide + 1} isHovered={isHovered} />
+				<div className='test1'>
+					<Header id='header'>XYZ Photography</Header>
 
-				<Header id='header'>XYZ Photography</Header>
+					<StyledImageComponent
+						src={`/images/${data[nextSlide].imgSrc}`}
+						alt={`/images/${data[nextSlide].description}`}
+						onClick={handleNextSlides}
+						onMouseEnter={handleMouseEnter}
+						onMouseLeave={handleMouseLeave}
+					/>
+				</div>
+				<div className='test2'>
+					<CenterSlide
+						data={data}
+						handleNextSlides={handleNextSlides}
+						currentSlide={currentSlide}
+						currentData={currentData}
+						handleMouseEnter={handleMouseEnter}
+						handleMouseLeave={handleMouseLeave}
+					/>
+				</div>
+				<div className='test3'>
+					<div className='test3inside'>
+						<StyledImageComponent
+							src={`/images/${data[previousSlide].imgSrc}`}
+							alt={`/images/${data[previousSlide].description}`}
+							onClick={handlePreviousSlides}
+							onMouseEnter={handleMouseEnter}
+							onMouseLeave={handleMouseLeave}
+						/>
 
-				<StyledImageComponent
-					src={`/images/${data[nextSlide].imgSrc}`}
-					width={248}
-					height={330}
-					alt={`/images/${data[nextSlide].description}`}
-					onClick={handleNextSlides}
-					onMouseEnter={handleMouseEnter}
-					onMouseLeave={handleMouseLeave}
-					style={{ top: "16px", left: "1336px" }}
-				/>
-
-				<CenterSlide
-					data={data}
-					handleNextSlides={handleNextSlides}
-					currentSlide={currentSlide}
-					currentData={currentData}
-					handleMouseEnter={handleMouseEnter}
-					handleMouseLeave={handleMouseLeave}
-				/>
-
-				<StyledImageComponent
-					src={`/images/${data[currentSlide].imgSrc}`}
-					width={512}
-					height={680}
-					alt={`/images/${data[currentSlide].description}`}
-					onClick={handleNextSlides}
-					onMouseEnter={handleMouseEnter}
-					onMouseLeave={handleMouseLeave}
-					style={{
-						top: "110px",
-						left: "544px",
-					}}
-				/>
-				<StyledImageComponent
-					src={`/images/${data[previousSlide].imgSrc}`}
-					width={248}
-					height={330}
-					alt={`/images/${data[previousSlide].description}`}
-					onClick={handlePreviousSlides}
-					onMouseEnter={handleMouseEnter}
-					onMouseLeave={handleMouseLeave}
-					style={{
-						top: "554px",
-						left: "16px",
-					}}
-				/>
-
-				<DetailBox>
-					<DetailText>{currentData.photographer}</DetailText>
-					<DetailText $align={"right"}>{currentData.date}</DetailText>
-					<Button onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-						Have a look
-					</Button>
-				</DetailBox>
-				<Background currentData={currentData} />
+						<Details
+							currentData={currentData}
+							handleMouseEnter={handleMouseEnter}
+							handleMouseLeave={handleMouseLeave}
+						/>
+					</div>
+				</div>
 			</Container>
+			<Background currentData={currentData} />
 		</>
 	);
 }

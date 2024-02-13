@@ -2,13 +2,9 @@ import styled from "styled-components";
 import "../../App.css";
 
 export const ImageOuterContainer = styled.div`
-	top: 110px;
-	left: 544px;
 	width: 512px;
 	height: 680px;
-	position: absolute;
 	z-index: 100;
-	background-color: red;
 	pointer-events: none;
 `;
 
@@ -21,7 +17,7 @@ export const ImageContainer = styled.div`
 
 export const OverlayText = styled.div`
 	text-align: center;
-	width: 1000px;
+	width: 850px;
 	position: absolute;
 	top: 50%;
 	left: 50%;

@@ -1,23 +1,6 @@
 import { BackgroundContainer, BackgroundBlur } from "./styles";
-// import { useRef, useState } from "react";
-
-// import gsap from "gsap";
-// import { useGSAP } from "@gsap/react";
 
 export default function Background({ currentData }: { currentData: any }) {
-	// const [imageSrc, setImageSrc] = useState(`/images/${currentData.bgImg}`);
-
-	// const container = useRef<any>();
-	// const newImage = useRef<any>();
-
-	// useGSAP(
-	// 	() => {
-	// 		gsap.to(container.current, { opacity: 0, duration: 5, delay: 5 });
-	// 		gsap.to(newImage.current, { opacity: 1, duration: 5, delay: 5 });
-	// 	},
-	// 	{ dependencies: [currentData], scope: container }
-	// );
-
 	return (
 		<BackgroundContainer>
 			<img
@@ -32,7 +15,6 @@ export default function Background({ currentData }: { currentData: any }) {
 					overflow: "hidden",
 					position: "fixed",
 				}}
-				// ref={container}
 			/>
 
 			{/* <Image

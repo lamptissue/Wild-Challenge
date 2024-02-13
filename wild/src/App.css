@@ -3,7 +3,53 @@
 	padding: 0;
 	margin: 0;
 }
+
+@font-face {
+	font-family: "Tungsten";
+	src: url("/fonts/Tungsten-Semibold.woff2") format("woff2"), url("/fonts/Tungsten-Semibold.woff") format("woff");
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+	/* font-display: fallback; */
+}
+
+@font-face {
+	font-family: "Tungsten";
+	src: url("/fonts/Tungsten-Bold.woff2") format("woff2"), url("/fonts/Tungsten-Bold.woff") format("woff");
+	font-weight: bold;
+	font-style: normal;
+	font-display: swap;
+	/* font-display: fallback; */
+}
 .char {
 	transform: translateY(100px);
 	transition: transform 0.5s;
+}
+
+.test1 {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.test2 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.test3 {
+	display: flex;
+	justify-content: flex-end;
+	height: 100%;
+}
+
+.test3inside {
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: end;
+	flex-direction: column;
+	position: relative;
+	max-width: 248px;
 }

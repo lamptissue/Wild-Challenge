@@ -4,15 +4,13 @@ export const StyledCenterImage = styled.img`
 	border-radius: 10px;
 	position: absolute;
 	border: 1px solid black;
+	width: 512px;
+	height: 680px;
 `;
 
 export const ImageOuterContainer = styled.div`
-	/* top: 110px;
-	left: 544px; */
-	display: grid;
-	place-content: center;
-	/* height: 100vh; */
-	width: 512px;
-	height: 680px;
-	/* position: absolute; */
+	max-width: 100%;
+	height: auto;
+	z-index: 10;
+	position: relative;
 `;

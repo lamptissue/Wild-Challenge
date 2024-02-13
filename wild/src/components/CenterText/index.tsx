@@ -8,9 +8,6 @@ import {
 	OutlineText,
 	H1,
 } from "./styles";
-// import { useRef } from "react";
-// import gsap from "gsap";
-// import { useGSAP } from "@gsap/react";
 
 interface ImageData {
 	id: number;
@@ -31,14 +28,6 @@ export default function CenterSlide({
 	currentSlide: number;
 	currentData: any;
 }) {
-	// const container = useRef<any>();
-	// useGSAP(
-	// 	() => {
-	// 		// gsap code here...
-	// 		gsap.from(".test", { alpha: 0, duration: 4, delay: 4 }); // <-- automatically reverted
-	// 	},
-	// 	{ dependencies: [currentData], scope: container }
-	// );
 	return (
 		<ImageOuterContainer>
 			<ImageContainer>

@@ -30,10 +30,8 @@ export default function CenterImage({
 	return (
 		<ImageOuterContainer onClick={() => handleNextSlides()}>
 			<StyledCenterImage
-				src={`/images/${currentData.imgSrc}`}
+				src={`/images/${data[currentSlide].imgSrc}`}
 				alt={currentData.description}
-				width={512}
-				height={680}
 				onMouseEnter={() => handleMouseEnter()}
 				onMouseLeave={() => handleMouseLeave()}
 			/>

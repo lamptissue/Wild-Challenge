@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const BackgroundContainer = styled.div`
-	width: 1856px;
-	height: 2466px;
 	top: -783px;
 	left: -128px;
 	overflow: hidden;
