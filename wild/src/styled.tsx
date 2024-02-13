@@ -4,7 +4,8 @@ export const GlobalStyle = createGlobalStyle`
 
 body {
     text-transform: uppercase;
-	font-family: "Tungsten";    
+	font-family: "Tungsten"; 
+	cursor: none;
 }
 `;
 
@@ -43,8 +44,6 @@ export const Container = styled.div`
 	display: grid;
 	grid-template-columns: 1fr 2fr 1fr;
 
-	/* overflow: hidden; */
 	z-index: 5;
 	padding: 16px;
-	cursor: none;
 `;

@@ -8,6 +8,9 @@ import {
 	OutlineText,
 	H1,
 } from "./styles";
+import { useRef, useState } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 interface ImageData {
 	id: number;
@@ -28,16 +31,37 @@ export default function CenterSlide({
 	currentSlide: number;
 	currentData: any;
 }) {
+	const testContainer = useRef<any>();
+
+	const [title, setTitle] = useState(currentData.title);
+
+	useGSAP(
+		() => {
+			gsap.to(".titleAnimation", {
+				opacity: 0,
+				duration: 0.5,
+				onComplete: () => {
+					setTitle(currentData.title);
+
+					gsap.fromTo(".titleAnimation", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 1 });
+				},
+			});
+		},
+		{ dependencies: [currentData], scope: testContainer }
+	);
+
 	return (
 		<ImageOuterContainer>
-			<ImageContainer>
-				<FilledText>
-					<H1>{currentData.title}</H1>
-				</FilledText>
-			</ImageContainer>
-			<OutlineText>
-				<H1>{currentData.title}</H1>
-			</OutlineText>
+			<div ref={testContainer}>
+				<ImageContainer>
+					<FilledText>
+						<H1 className='titleAnimation'>{title}</H1>
+					</FilledText>
+				</ImageContainer>
+				<OutlineText>
+					<H1 className='titleAnimation'>{title}</H1>
+				</OutlineText>
+			</div>
 
 			<SlideCounterContainer>
 				<CurrentSlideCounter>

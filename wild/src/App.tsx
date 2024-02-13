@@ -1,10 +1,7 @@
-// import { useState, useRef } from "react";
 import { useState } from "react";
-
 import { GlobalStyle, Header, Container, StyledImageComponent } from "./styled";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-
 import SplitType from "split-type";
 import "./App.css";
 
@@ -12,9 +9,9 @@ import data from "./images.json";
 
 import Background from "./components/Background";
 import CenterSlide from "./components/CenterSlide";
-
 import Cursor from "./components/Cursor";
 import Details from "./components/Details";
+
 function App() {
 	const [currentSlide, setCurrentSlide] = useState(0);
 	const [previousSlide, setPreviousSlide] = useState(data.length - 1);
@@ -43,12 +40,11 @@ function App() {
 		setIsHovered(false);
 	};
 
-	//Gets information
 	const currentData = data[currentSlide];
 
 	useGSAP(() => {
 		const myText = SplitType.create("#header");
-
+		console.log("text", myText);
 		gsap.to(".char", { y: 2, stagger: 0.05, delay: 0.5, duration: 1 });
 	});
 
