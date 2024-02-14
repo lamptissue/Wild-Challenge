@@ -8,7 +8,7 @@ export const StyledCenterImage = styled.img`
 	height: 680px;
 `;
 
-export const ImageOuterContainer = styled.div`
+export const CenterContainer = styled.div`
 	max-width: 100%;
 	height: auto;
 	z-index: 10;

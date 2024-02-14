@@ -1,5 +1,5 @@
-import { useRef, useState } from "react";
 import { DetailBox, DetailText, Button } from "./styles";
+import { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -13,12 +13,13 @@ export default function Details({
 	handleMouseLeave: any;
 }) {
 	const detailContainer = useRef<any>();
-	const loadAnimation = useRef<any>();
+	const detailLoadAnimation = useRef<any>();
+
 	const [author, setAuthor] = useState(currentData.author);
 	const [date, setDate] = useState(currentData.date);
 
 	useGSAP(() => {
-		gsap.to(loadAnimation.current, { opacity: 1, delay: 7, duration: 3 });
+		gsap.to(detailLoadAnimation.current, { opacity: 1, delay: 7, duration: 3 });
 	});
 
 	useGSAP(
@@ -38,7 +39,7 @@ export default function Details({
 	);
 
 	return (
-		<DetailBox ref={loadAnimation}>
+		<DetailBox ref={detailLoadAnimation}>
 			<div ref={detailContainer}>
 				<DetailText className='detailAnimation'>{author}</DetailText>
 				<DetailText $align={"right"}>{date}</DetailText>

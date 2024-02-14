@@ -6,11 +6,11 @@ import { useGSAP } from "@gsap/react";
 export default function Background({ currentData }: { currentData: any }) {
 	const [bgImage1, setBgImage1] = useState(currentData.bgImg);
 	const [bgImage2, setBgImage2] = useState("");
+	const [activeLayer, setActiveLayer] = useState(1);
 	const bgRef1 = useRef<any>(null);
 	const bgRef2 = useRef<any>(null);
-	const [activeLayer, setActiveLayer] = useState(1);
 
-	const container = useRef<any>();
+	const backgroundContainer = useRef<any>();
 
 	useGSAP(
 		() => {
@@ -19,7 +19,6 @@ export default function Background({ currentData }: { currentData: any }) {
 			const nextRef = nextLayer === 1 ? bgRef1.current : bgRef2.current;
 
 			nextImageSetter(currentData.bgImg);
-
 			gsap
 				.timeline()
 				.from(nextRef, { opacity: 0 })
@@ -28,14 +27,13 @@ export default function Background({ currentData }: { currentData: any }) {
 
 			setActiveLayer(nextLayer);
 		},
-		{ dependencies: [currentData], scope: container }
+		{ dependencies: [currentData], scope: backgroundContainer }
 	);
 
 	return (
-		<BackgroundContainer ref={container}>
+		<BackgroundContainer ref={backgroundContainer}>
 			<BackgroundImage ref={bgRef1} src={`/images/${bgImage1}`} />
 			<BackgroundImage ref={bgRef2} src={`/images/${bgImage2}`} />
-
 			<BackgroundBlur />
 		</BackgroundContainer>
 	);

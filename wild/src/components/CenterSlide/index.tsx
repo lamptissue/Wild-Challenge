@@ -1,9 +1,9 @@
-import { ImageOuterContainer, StyledCenterImage } from "./styles";
+import { CenterContainer, StyledCenterImage } from "./styles";
 import { useRef } from "react";
-import CenterText from "../CenterText";
-
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+
+import CenterText from "../CenterText";
 
 interface ImageData {
 	id: number;
@@ -30,13 +30,13 @@ export default function CenterImage({
 	handleMouseEnter: any;
 	handleMouseLeave: any;
 }) {
-	const loadAnimation = useRef<any>();
+	const animationOnLoad = useRef<any>();
 
 	useGSAP(() => {
-		gsap.to(loadAnimation.current, { opacity: 1, delay: 3.5, duration: 3 });
+		gsap.to(animationOnLoad.current, { opacity: 1, delay: 3.5, duration: 3 });
 	});
 	return (
-		<ImageOuterContainer onClick={() => handleNextSlides()} ref={loadAnimation}>
+		<CenterContainer onClick={() => handleNextSlides()} ref={animationOnLoad}>
 			<StyledCenterImage
 				src={`/images/${data[currentSlide].imgSrc}`}
 				alt={currentData.description}
@@ -44,6 +44,6 @@ export default function CenterImage({
 				onMouseLeave={() => handleMouseLeave()}
 			/>
 			<CenterText data={data} currentSlide={currentSlide} currentData={currentData} />
-		</ImageOuterContainer>
+		</CenterContainer>
 	);
 }

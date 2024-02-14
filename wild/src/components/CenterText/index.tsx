@@ -8,6 +8,7 @@ import {
 	OutlineText,
 	H1,
 } from "./styles";
+
 import { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -31,15 +32,15 @@ export default function CenterSlide({
 	currentSlide: number;
 	currentData: any;
 }) {
-	const testContainer = useRef<any>();
-	const slider = useRef<any>();
-
 	const [title, setTitle] = useState(currentData.title);
 
+	const centerImageContainer = useRef<any>();
+	const sliderOnLoad = useRef<any>();
+
 	useGSAP(() => {
-		gsap.set([testContainer.current, slider.current], { opacity: 0 });
-		gsap.to(testContainer.current, { opacity: 1, duration: 2, delay: 6 });
-		gsap.to(slider.current, { opacity: 1, duration: 2, delay: 7 });
+		gsap.set([centerImageContainer.current, sliderOnLoad.current], { opacity: 0 });
+		gsap.to(centerImageContainer.current, { opacity: 1, duration: 2, delay: 6 });
+		gsap.to(sliderOnLoad.current, { opacity: 1, duration: 2, delay: 7 });
 	});
 
 	useGSAP(
@@ -54,11 +55,11 @@ export default function CenterSlide({
 				},
 			});
 		},
-		{ dependencies: [currentData], scope: testContainer }
+		{ dependencies: [currentData], scope: centerImageContainer }
 	);
 
 	return (
-		<ImageOuterContainer ref={testContainer}>
+		<ImageOuterContainer ref={centerImageContainer}>
 			<ImageContainer>
 				<FilledText>
 					<H1 className='titleAnimation'>{title}</H1>
@@ -68,7 +69,7 @@ export default function CenterSlide({
 				<H1 className='titleAnimation'>{title}</H1>
 			</OutlineText>
 
-			<SlideCounterContainer ref={slider}>
+			<SlideCounterContainer ref={sliderOnLoad}>
 				<CurrentSlideCounter>
 					{currentSlide + 1} of {data.length}
 				</CurrentSlideCounter>

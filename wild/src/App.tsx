@@ -1,4 +1,3 @@
-import { useState, useRef } from "react";
 import {
 	GlobalStyle,
 	Header,
@@ -9,9 +8,12 @@ import {
 	RightColumnInside,
 	CenterColumn,
 } from "./styled";
+
+import { useState, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import SplitType from "split-type";
+
 import "./App.css";
 
 import data from "./images.json";
@@ -21,14 +23,19 @@ import CenterSlide from "./components/CenterSlide";
 import Cursor from "./components/Cursor";
 import Details from "./components/Details";
 
-function App() {
+export default function App() {
 	const [currentSlide, setCurrentSlide] = useState(0);
 	const [previousSlide, setPreviousSlide] = useState(data.length - 1);
 	const [nextSlide, setNextSlide] = useState(currentSlide + 1);
 	const [isHovered, setIsHovered] = useState(false);
+
 	const leftColumnRef = useRef<any>();
 	const rightColumnRef = useRef<any>();
+	const containerRef = useRef<any>();
+
 	const maxDataLength = data.length - 1;
+
+	const currentData = data[currentSlide];
 
 	const handlePreviousSlides = () => {
 		currentSlide === 0 ? setCurrentSlide(maxDataLength) : setCurrentSlide((count) => count - 1);
@@ -37,8 +44,8 @@ function App() {
 
 		gsap
 			.timeline()
-			.fromTo(leftColumnRef.current, { opacity: 0 }, { opacity: 1, duration: 0.5, stagger: 0.5 })
-			.fromTo(rightColumnRef.current, { opacity: 0 }, { opacity: 1, duration: 0.5 });
+			.fromTo([leftColumnRef.current, rightColumnRef.current], { opacity: 0 }, { opacity: 1, duration: 2.5 });
+		// .fromTo(, { opacity: 0 }, { opacity: 1, duration: 0.5 });
 	};
 
 	const handleNextSlides = () => {
@@ -48,8 +55,8 @@ function App() {
 
 		gsap
 			.timeline()
-			.fromTo(leftColumnRef.current, { opacity: 0 }, { opacity: 1, duration: 0.5, stagger: 0.5 })
-			.fromTo(rightColumnRef.current, { opacity: 0 }, { opacity: 1, duration: 0.5 });
+			.fromTo([rightColumnRef.current, leftColumnRef.current], { opacity: 0 }, { opacity: 1, duration: 2.5 });
+		// .fromTo(leftColumnRef.current, { opacity: 0 }, { opacity: 1, duration: 0.5 });
 	};
 
 	const handleMouseEnter = () => {
@@ -59,8 +66,6 @@ function App() {
 	const handleMouseLeave = () => {
 		setIsHovered(false);
 	};
-
-	const currentData = data[currentSlide];
 
 	useGSAP(() => {
 		const tl = gsap.timeline();
@@ -110,7 +115,6 @@ function App() {
 				<RightColumn className='second'>
 					<RightColumnInside>
 						<StyledImageComponent
-							// ref={previousSlideRef}
 							ref={rightColumnRef}
 							src={`/images/${data[previousSlide].imgSrc}`}
 							alt={`/images/${data[previousSlide].description}`}
@@ -130,5 +134,3 @@ function App() {
 		</>
 	);
 }
-
-export default App;

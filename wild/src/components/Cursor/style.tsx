@@ -9,8 +9,10 @@ export const CursorProgressContainer = styled.div<{ $isHovered?: boolean }>`
 	width: ${({ $isHovered }) => ($isHovered ? "60px" : "42px")};
 	display: block;
 	border-radius: 50px;
-	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-	z-index: 10000;
+	/* box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1); */
+	box-shadow: ${({ $isHovered }) =>
+		$isHovered ? "inset 0 0 0 1px rgb(255, 255, 255);" : "inset 0 0 0 1px rgba(255, 255, 255, 0.1);"};
+	z-index: 1000;
 	opacity: 1;
 	-webkit-transition: all 200ms linear;
 	transition: all 200ms linear;
