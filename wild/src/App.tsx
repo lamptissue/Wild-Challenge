@@ -31,7 +31,6 @@ export default function App() {
 
 	const leftColumnRef = useRef<any>();
 	const rightColumnRef = useRef<any>();
-	const containerRef = useRef<any>();
 
 	const maxDataLength = data.length - 1;
 
@@ -45,7 +44,6 @@ export default function App() {
 		gsap
 			.timeline()
 			.fromTo([leftColumnRef.current, rightColumnRef.current], { opacity: 0 }, { opacity: 1, duration: 2.5 });
-		// .fromTo(, { opacity: 0 }, { opacity: 1, duration: 0.5 });
 	};
 
 	const handleNextSlides = () => {
@@ -56,7 +54,6 @@ export default function App() {
 		gsap
 			.timeline()
 			.fromTo([rightColumnRef.current, leftColumnRef.current], { opacity: 0 }, { opacity: 1, duration: 2.5 });
-		// .fromTo(leftColumnRef.current, { opacity: 0 }, { opacity: 1, duration: 0.5 });
 	};
 
 	const handleMouseEnter = () => {
